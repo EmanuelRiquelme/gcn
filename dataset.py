@@ -51,12 +51,3 @@ class Cites(Dataset):
 
     def __getitem__(self, idx):
         return torch.tensor(self.adj_matrix)[idx].float(),torch.tensor(self.features)[idx],torch.tensor(self.labels)[idx]
-        #return self.features[idx]
-
-if __name__ == '__main__':
-    from model import GNN
-    data = Cites(root_dir = 'cora')
-    adj,features,labels = data[:2]
-    print(features.size())
-    model = GNN()
-    print(model(adj,features))
